@@ -1,0 +1,12 @@
+---
+dependencies: []
+
+galaxy_info:
+  role_name: pam_ssh_login_mail
+  author: benjaminhae
+  description: send email on ssh login using pam scripts
+  company: ""
+  license: "license (BSD, MIT)"
+  min_ansible_version: 2.4
+  galaxy_tags:
+    - system

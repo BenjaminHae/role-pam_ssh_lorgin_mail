@@ -1,0 +1,3 @@
+---
+recipient: "root@localhost"
+subject: "SSH Login: $PAM_USER"
