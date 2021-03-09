@@ -17,6 +17,6 @@ BODY="A SSH login was successful, so here are some information for security:
     Server:      `uname -a`
 "
 
-echo "${BODY}" | mail -s ${SUBJECT} ${RECIPIENT}
+echo "${BODY}" | mail -s "${SUBJECT}" "${RECIPIENT}"
 
 exit 0
