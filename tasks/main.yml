@@ -3,14 +3,17 @@
   file:
     path: /etc/pam.scripts
     mode: 0755
-    owner: "root:root"
+    owner: "root"
+    group: "root"
+    state: directory
 - name: Create email notification script
   template:
     src: send_mail_on_login.sh.j2
     dest: /etc/pam.scripts/send_mail_on_login.sh
     mode: 0700
-    owner: "root:root"
+    owner: "root"
+    group: "root"
 - name: call script from sshd login
   lineinfile:
     dest: /etc/pam.d/sshd
-    line: "session optional pam_exec.so /usr/local/bin/send_mail_on_ssh_login.sh"
+    line: "session optional pam_exec.so /etc/pam.scripts/send_mail_on_login.sh"
