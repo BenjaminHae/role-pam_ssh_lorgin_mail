@@ -1,8 +1,19 @@
 #!/bin/sh
 
+USER_IP_FILE="{{ remember_file }}"
+
 if [ ${PAM_TYPE} != "open_session" ]; then
     exit 0
 fi
+
+USER_IP="${PAM_USER} ${PAM_RHOST}"
+
+if [ ! -z "$(grep "^${USER_IP}$" ${USER_IP_FILE})" ]; then
+    exit 0
+fi
+
+umask 066
+echo "${USER_IP}" >> ${USER_IP_FILE}
 
 # Your Email Information: Recipient (To:), Subject and Body
 RECIPIENT="{{ recipient }}"

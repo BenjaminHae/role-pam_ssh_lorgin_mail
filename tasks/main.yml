@@ -17,3 +17,9 @@
   lineinfile:
     dest: /etc/pam.d/sshd
     line: "session optional pam_exec.so /etc/pam.scripts/send_mail_on_login.sh"
+- name: setup cronjob to remove remember file
+  ansible.builtin.cron:
+    name: "remove pam_ssh_mail_on_login remember file every day"
+    minute: 0
+    hour: 0
+    job: "rm {{ remember_file }}"
