@@ -2,3 +2,4 @@
 recipient: "root@localhost"
 subject: "SSH Login: ${PAM_USER}"
 remember_file: "/tmp/pam_mail_on_login"
+do_remember: true

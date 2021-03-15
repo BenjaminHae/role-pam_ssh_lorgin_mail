@@ -22,4 +22,12 @@
     name: "remove pam_ssh_mail_on_login remember file every day"
     minute: 0
     hour: 0
-    job: "rm {{ remember_file }}"
+    job: "echo -n \"\" >> {{ remember_file }}"
+    state: "{{ 'present' if do_remember else 'absent' }}"
+- name: create remember file
+  file:
+    path: "{{ remember_file }}"
+    mode: 0600
+    owner: "root"
+    group: "root"
+    state: "{{ 'touch' if do_remember else 'absent' }}"
