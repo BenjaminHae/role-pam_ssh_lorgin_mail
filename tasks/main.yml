@@ -22,4 +22,4 @@
     name: "remove pam_ssh_mail_on_login remember file every day"
     minute: 0
     hour: 0
-    job: "echo "" > {{ remember_file }}"
+    job: "echo \"\" > {{ remember_file }}"
