@@ -6,8 +6,8 @@ if [ ${PAM_TYPE} != "open_session" ]; then
     exit 0
 fi
 
+{% if do_remember %}
 USER_IP="${PAM_USER} ${PAM_RHOST}"
-USER_IP="$(echo ${USER_IP} | sha256sum -z)"
 
 if [ ! -z "$(grep "^${USER_IP}$" ${USER_IP_FILE})" ]; then
     exit 0
@@ -15,6 +15,7 @@ fi
 
 umask 066
 echo "${USER_IP}" >> ${USER_IP_FILE}
+{% endif %}
 
 # Your Email Information: Recipient (To:), Subject and Body
 RECIPIENT="{{ recipient }}"
